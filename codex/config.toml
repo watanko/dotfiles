@@ -1,0 +1,16 @@
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+personality = "pragmatic"
+
+[mcp_servers.chrome-devtools]
+type = "stdio"
+command = "npx"
+args = ["chrome-devtools-mcp@latest", "--headless=true", "--isolated=true"]
+description = "Chrome DevTools MCP: run performance traces, inspect the DOM, and perform real-time debugging of your web pages — useful for browser automation, end-to-end testing, and capturing page artifacts."
+
+# Projects are machine-specific. Add trusted projects per machine:
+# [projects."/path/to/project"]
+# trust_level = "trusted"
+
+[plugins."github@openai-curated"]
+enabled = true

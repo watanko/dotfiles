@@ -1,0 +1,4 @@
+prefix_rule(pattern=["uv", "run", "pytest", "batch/model_structurer/tests"], decision="allow")
+prefix_rule(pattern=["uv", "run", "pytest", "."], decision="allow")
+prefix_rule(pattern=["uv", "run", "python"], decision="allow")
+prefix_rule(pattern=["sort"], decision="allow")
