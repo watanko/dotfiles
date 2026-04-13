@@ -7,11 +7,66 @@ keybinds clear-defaults=true {
         bind "Ctrl b" { SwitchToMode "tmux"; }
     }
     tmux {
+        // Pane operations
+        bind "v" { NewPane; SwitchToMode "normal"; }
         bind "down" { NewPane "down"; SwitchToMode "normal"; }
         bind "right" { NewPane "right"; SwitchToMode "normal"; }
+        bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
+        bind "w" { CloseFocus; SwitchToMode "normal"; }
+
+        // Pane navigation
+        bind "h" { MoveFocus "left"; SwitchToMode "normal"; }
+        bind "j" { MoveFocus "down"; SwitchToMode "normal"; }
+        bind "k" { MoveFocus "up"; SwitchToMode "normal"; }
+        bind "l" { MoveFocus "right"; SwitchToMode "normal"; }
+
+        // Tab operations
         bind "c" { NewTab; SwitchToMode "normal"; }
-        bind "d" { Detach; }
         bind "x" { CloseTab; SwitchToMode "normal"; }
+        bind "n" { GoToNextTab; SwitchToMode "normal"; }
+        bind "p" { GoToPreviousTab; SwitchToMode "normal"; }
+        bind "1" { GoToTab 1; SwitchToMode "normal"; }
+        bind "2" { GoToTab 2; SwitchToMode "normal"; }
+        bind "3" { GoToTab 3; SwitchToMode "normal"; }
+        bind "4" { GoToTab 4; SwitchToMode "normal"; }
+        bind "5" { GoToTab 5; SwitchToMode "normal"; }
+
+        // Session
+        bind "d" { Detach; }
+        bind "o" { LaunchPlugin "session-manager"; SwitchToMode "normal"; }
+
+        // Scroll mode
+        bind "[" { SwitchToMode "scroll"; }
+
+        // Resize mode
+        bind "r" { SwitchToMode "resize"; }
+
+        bind "esc" { SwitchToMode "normal"; }
+    }
+    scroll {
+        bind "j" "down" { ScrollDown; }
+        bind "k" "up" { ScrollUp; }
+        bind "d" { HalfPageScrollDown; }
+        bind "u" { HalfPageScrollUp; }
+        bind "q" "esc" { SwitchToMode "normal"; }
+        bind "/" { SwitchToMode "entersearch"; SearchInput 0; }
+    }
+    entersearch {
+        bind "esc" { SwitchToMode "normal"; }
+        bind "enter" { SwitchToMode "search"; }
+    }
+    search {
+        bind "n" { Search "down"; }
+        bind "N" { Search "up"; }
+        bind "q" "esc" { SwitchToMode "normal"; }
+    }
+    resize {
+        bind "h" { Resize "Increase left"; }
+        bind "j" { Resize "Increase down"; }
+        bind "k" { Resize "Increase up"; }
+        bind "l" { Resize "Increase right"; }
+        bind "=" { Resize "Increase"; }
+        bind "-" { Resize "Decrease"; }
         bind "esc" { SwitchToMode "normal"; }
     }
 }
@@ -89,7 +144,7 @@ themes {
 // The name of the default layout to load on startup
 // Default: "default"
 // 
-// default_layout "compact"
+default_layout "default"
  
 // The folder in which Zellij will look for layouts
 // (Requires restart)
